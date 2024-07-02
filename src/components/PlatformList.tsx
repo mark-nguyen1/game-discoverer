@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { IconType } from "react-icons";
+
 interface Props {
   game: Game;
 }
