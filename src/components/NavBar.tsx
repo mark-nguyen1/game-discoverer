@@ -1,5 +1,5 @@
 import websiteLogo from "../assets/logo.webp";
-import { Image, HStack, Text } from "@chakra-ui/react";
+import { Image, HStack } from "@chakra-ui/react";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchMenu from "./SearchMenu";
 
