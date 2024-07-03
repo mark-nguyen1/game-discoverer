@@ -9,13 +9,16 @@ import { Genre } from "./hooks/useGenres";
 import PlatformDropdown from "./components/PlatformDropdown";
 import { Platform } from "./hooks/usePlatforms";
 import SortingDropdown from "./components/SortingDropdown";
+
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  ordering: string | null;
 }
+
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
+  console.log("order: " + gameQuery.ordering);
   return (
     <>
       <Grid
@@ -44,7 +47,10 @@ function App() {
             selectedPlatform={gameQuery.platform}
             setPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
           ></PlatformDropdown>
-          <SortingDropdown></SortingDropdown>
+          <SortingDropdown
+            selectedOrder={gameQuery.ordering}
+            setOrder={(ordering) => setGameQuery({ ...gameQuery, ordering })}
+          ></SortingDropdown>
           <GameGrid gameQuery={gameQuery}></GameGrid>
         </GridItem>
       </Grid>
