@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { IconType } from "react-icons";
+import { SiAtari, SiSega, SiApplearcade, SiCommodore } from "react-icons/si";
+import { GiGameConsole } from "react-icons/gi";
 
 interface Props {
   game: Game;
@@ -28,6 +30,11 @@ const PlatformList = ({ game }: Props) => {
     iOS: FaAppStoreIos,
     Web: FaChrome,
     "Apple Macintosh": FaApple,
+    Atari: SiAtari,
+    "3DO": GiGameConsole,
+    "Neo Geo": SiApplearcade,
+    SEGA: SiSega,
+    "Commodore / Amiga": SiCommodore,
   };
 
   return (
@@ -35,10 +42,8 @@ const PlatformList = ({ game }: Props) => {
       {game.parent_platforms.map(({ platform }) => {
         const IconComponent = iconMap[platform.name];
         return IconComponent ? (
-          <Icon as={IconComponent} key={platform.name} color="gray.500" />
-        ) : (
-          <p>{platform.name}</p>
-        );
+          <Icon as={IconComponent} key={platform.id} color="gray.500" />
+        ) : null;
       })}
     </HStack>
   );
