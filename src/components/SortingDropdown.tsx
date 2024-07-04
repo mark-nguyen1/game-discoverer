@@ -10,7 +10,7 @@ const SortingDropdown = ({ selectedOrder, setOrder }: Props) => {
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date added" },
     { value: "name", label: "Name" },
-    { value: "-released", label: "Release date" },
+    { value: "-released", label: "Newest" },
     { value: "-metacritic", label: "Popularity" },
     { value: "-rating", label: "Average rating" },
   ];
@@ -19,10 +19,9 @@ const SortingDropdown = ({ selectedOrder, setOrder }: Props) => {
     orderType.map((item) => [item.value, item.label])
   );
 
-  console.log("ordering: " + selectedOrder);
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />} marginLeft={10}>
+      <MenuButton as={Button} rightIcon={<BsChevronDown />} marginLeft={5}>
         {"Order by: " +
           ((selectedOrder && orderTypeMap.get(selectedOrder)) || "Relevance")}
       </MenuButton>

@@ -10,18 +10,19 @@ import PlatformDropdown from "./components/PlatformDropdown";
 import { Platform } from "./hooks/usePlatforms";
 import SortingDropdown from "./components/SortingDropdown";
 import DynamicHeading from "./components/DynamicHeading";
+import PublisherDropdown from "./components/PublisherDropdown";
+import { Publisher } from "./hooks/usePublisher";
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   ordering: string | null;
   search: string;
+  publishers: Publisher | null;
 }
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  console.log("order: " + gameQuery.ordering);
-  console.log("search: " + gameQuery.search);
   return (
     <>
       <Grid
@@ -56,12 +57,17 @@ function App() {
                 setGameQuery({ ...gameQuery, platform })
               }
             ></PlatformDropdown>
+            <PublisherDropdown
+              selectedPublisher={gameQuery.publishers}
+              setPublisher={(publishers) =>
+                setGameQuery({ ...gameQuery, publishers })
+              }
+            />
             <SortingDropdown
               selectedOrder={gameQuery.ordering}
               setOrder={(ordering) => setGameQuery({ ...gameQuery, ordering })}
             ></SortingDropdown>
           </HStack>
-
           <GameGrid gameQuery={gameQuery}></GameGrid>
         </GridItem>
       </Grid>
